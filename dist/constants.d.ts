@@ -1,0 +1,11 @@
+export declare const NESTCORD_EVENT = "N_DISCORD_EVENT";
+export declare const NESTCORD_LOGIN = "N_DISCORD_LOGIN";
+export declare const NESTCORD_PARAM = "N_DISCORD_PARAM_PARSER";
+export declare const NESTCORD_ALIAS = "N_DISCORD_ALIAS";
+export declare const NESTCORD_CONFIG = "N_DISCORD_CONFIG";
+export declare const NESTCORD_INJECT = "N_DISCORD_PARAM_INJECT";
+export declare const NESTCORD_COMMAND = "N_DISCORD_COMMAND";
+export declare const NESTCORD_CHILDREN = "N_DISCORD_COMMAND_PARENT";
+export declare const NESTCORD_PARSER_NAME = "N_DISCORD_PARSER_NAME";
+export declare const NESTCORD_DESCRIPTION = "N_DISCORD_COMMAND_DESC";
+export declare const NESTCORD_COMMAND_REGISTER = "N_DISCORD_COMMAND_REG";
