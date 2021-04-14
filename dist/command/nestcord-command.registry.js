@@ -19,6 +19,9 @@ var NestCordCommandRegistry = /** @class */ (function () {
         this.separator = '\u0000';
     }
     NestCordCommandRegistry_1 = NestCordCommandRegistry;
+    NestCordCommandRegistry.prototype.getRegistry = function () {
+        return NestCordCommandRegistry_1.registry;
+    };
     NestCordCommandRegistry.prototype.register = function (path, executor) {
         var handler = this.ref.get(executor, { strict: false });
         var meta = {

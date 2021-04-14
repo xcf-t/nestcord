@@ -18,7 +18,7 @@ export class NestcordCommandExecutor implements NestCordEvent<'message'> {
 
     private prefix = '!';
 
-    handle(client: Client, message: Message) {
+    async handle(client: Client, message: Message) {
         if (!message.content.startsWith(this.prefix)) return;
 
         const input = message.content.substring(this.prefix.length);
@@ -57,27 +57,31 @@ export class NestcordCommandExecutor implements NestCordEvent<'message'> {
 
         console.log(injectionMapper);
 
-        if (!injectionMapper) {
-            const embed = new MessageEmbed();
+        if (!injectionMapper)
+            return this.sendHelpEmbed(message, command, last);
 
-            let description = '';
+        const result = await last.instance.execute.call(last.instance, ...injectionMapper);
 
-            for (const param of last.parameters) {
-                if (param.optional)
-                    description += `(${Reflect.getMetadata(NESTCORD_PARSER_NAME, param.parser)} ${param.name}) `;
-                else
-                    description += `[${Reflect.getMetadata(NESTCORD_PARSER_NAME, param.parser)} ${param.name}] `;
-            }
-
-            embed.setDescription(description);
-            embed.setTitle(this.prefix + command.map(x => x.toLowerCase()).join(" "));
-
-            message.channel.send(embed).then(() => null);
-
-            return;
-        }
-
-        last.instance.execute.call(last.instance, ...injectionMapper);
+        if (result === false)
+            return this.sendHelpEmbed(message, command, last);
     }
 
+
+    sendHelpEmbed(message: Message, command: string[], executor: NestCordCommandMeta) {
+        const embed = new MessageEmbed();
+
+        let description = '';
+
+        for (const param of executor.parameters) {
+            if (param.optional)
+                description += `(${Reflect.getMetadata(NESTCORD_PARSER_NAME, param.parser)} ${param.name}) `;
+            else
+                description += `[${Reflect.getMetadata(NESTCORD_PARSER_NAME, param.parser)} ${param.name}] `;
+        }
+
+        embed.setDescription(description);
+        embed.setTitle(this.prefix + command.map(x => x.toLowerCase()).join(" "));
+
+        message.channel.send(embed).then(() => null);
+    }
 }

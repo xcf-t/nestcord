@@ -19,7 +19,7 @@ export class NestCordCommandParser {
         mapped.set('client', message.client);
         mapped.set('author', message.author);
 
-        for (const param of meta.parameters) {
+        for (const param of (meta.parameters || [])) {
             const parser = this.ref.get(param.parser, { strict: false });
             const text = params[i];
 
@@ -44,7 +44,7 @@ export class NestCordCommandParser {
 
         const result: any[] = [];
 
-        for (const inject of meta.injector)
+        for (const inject of (meta.injector || []))
             result[inject.index] = mapped.get(inject.descriptor);
 
         return result;

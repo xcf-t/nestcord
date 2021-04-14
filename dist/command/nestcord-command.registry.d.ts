@@ -6,6 +6,7 @@ export declare class NestCordCommandRegistry {
     constructor(ref: ModuleRef);
     static registry: Map<string, NestCordCommandMeta>;
     private separator;
+    getRegistry(): Map<string, NestCordCommandMeta>;
     register(path: string, executor: Type<NestCordCommand>): void;
     getCommand(path: string | string[]): NestCordCommandMeta | null;
     registerCommand(executor: Type<NestCordCommand>, paths?: string[]): void;

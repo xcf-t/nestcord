@@ -22,7 +22,7 @@ var NestCordCommandParser = /** @class */ (function () {
         mapped.set('message', message);
         mapped.set('client', message.client);
         mapped.set('author', message.author);
-        for (var _i = 0, _a = meta.parameters; _i < _a.length; _i++) {
+        for (var _i = 0, _a = (meta.parameters || []); _i < _a.length; _i++) {
             var param = _a[_i];
             var parser = this.ref.get(param.parser, { strict: false });
             var text = params[i];
@@ -41,7 +41,7 @@ var NestCordCommandParser = /** @class */ (function () {
             i++;
         }
         var result = [];
-        for (var _b = 0, _c = meta.injector; _b < _c.length; _b++) {
+        for (var _b = 0, _c = (meta.injector || []); _b < _c.length; _b++) {
             var inject = _c[_b];
             result[inject.index] = mapped.get(inject.descriptor);
         }

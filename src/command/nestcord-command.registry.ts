@@ -21,6 +21,10 @@ export class NestCordCommandRegistry {
     public static registry: Map<string, NestCordCommandMeta> = new Map();
     private separator = '\u0000';
 
+    public getRegistry() {
+        return NestCordCommandRegistry.registry;
+    }
+
     public register(path: string, executor: Type<NestCordCommand>) {
         const handler: NestCordCommand = this.ref.get(executor, { strict: false });
 
