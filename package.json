@@ -1,6 +1,8 @@
 {
   "name": "nestcord",
   "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@nestjs-plus/discovery": "^2.0.2",
     "@nestjs/common": "^7.6.15",
