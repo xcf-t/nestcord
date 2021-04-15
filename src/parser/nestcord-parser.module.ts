@@ -4,6 +4,7 @@ import {MemberParser} from "./member.parser";
 import {NumberParser} from "./number.parser";
 import {StringParser} from "./string.parser";
 import {UserParser} from "./user.parser";
+import {DateParser} from "./date.parser";
 
 @Module({
     providers: [
@@ -12,6 +13,7 @@ import {UserParser} from "./user.parser";
         NumberParser,
         StringParser,
         UserParser,
+        DateParser,
     ],
     exports: [
         ChannelParser,
@@ -19,6 +21,7 @@ import {UserParser} from "./user.parser";
         NumberParser,
         StringParser,
         UserParser,
+        DateParser,
     ],
 })
 export class NestCordParserModule {}

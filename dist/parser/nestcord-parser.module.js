@@ -13,6 +13,7 @@ var member_parser_1 = require("./member.parser");
 var number_parser_1 = require("./number.parser");
 var string_parser_1 = require("./string.parser");
 var user_parser_1 = require("./user.parser");
+var date_parser_1 = require("./date.parser");
 var NestCordParserModule = /** @class */ (function () {
     function NestCordParserModule() {
     }
@@ -24,6 +25,7 @@ var NestCordParserModule = /** @class */ (function () {
                 number_parser_1.NumberParser,
                 string_parser_1.StringParser,
                 user_parser_1.UserParser,
+                date_parser_1.DateParser,
             ],
             exports: [
                 channel_parser_1.ChannelParser,
@@ -31,6 +33,7 @@ var NestCordParserModule = /** @class */ (function () {
                 number_parser_1.NumberParser,
                 string_parser_1.StringParser,
                 user_parser_1.UserParser,
+                date_parser_1.DateParser,
             ],
         })
     ], NestCordParserModule);
