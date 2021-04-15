@@ -23,4 +23,5 @@ __exportStar(require("./parser/member.parser"), exports);
 __exportStar(require("./parser/number.parser"), exports);
 __exportStar(require("./parser/string.parser"), exports);
 __exportStar(require("./parser/user.parser"), exports);
+__exportStar(require("./parser/date.parser"), exports);
 //# sourceMappingURL=index.js.map

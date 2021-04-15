@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import 'moment-parseplus';
 
 @NestCord.Parser('Date')
-export class DataParser implements NestCordParser<Date> {
+export class DateParser implements NestCordParser<Date> {
 
     parse(message: Message, input: string): Date | null {
         moment.locale(message.author.locale || 'en');

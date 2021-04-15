@@ -11,3 +11,4 @@ export * from './parser/member.parser';
 export * from './parser/number.parser';
 export * from './parser/string.parser';
 export * from './parser/user.parser';
+export * from './parser/date.parser';
