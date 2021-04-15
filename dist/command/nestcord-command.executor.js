@@ -94,7 +94,6 @@ var NestcordCommandExecutor = /** @class */ (function () {
                             return [2 /*return*/];
                         params = args.slice(command.length);
                         injectionMapper = this.parser.parse(message, last, params);
-                        console.log(injectionMapper);
                         if (!injectionMapper)
                             return [2 /*return*/, this.sendHelpEmbed(message, command, last)];
                         return [4 /*yield*/, (_a = last.instance.execute).call.apply(_a, __spreadArray([last.instance], injectionMapper))];

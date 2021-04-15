@@ -55,8 +55,6 @@ export class NestcordCommandExecutor implements NestCordEvent<'message'> {
 
         const injectionMapper = this.parser.parse(message, last, params);
 
-        console.log(injectionMapper);
-
         if (!injectionMapper)
             return this.sendHelpEmbed(message, command, last);
 
