@@ -47,5 +47,6 @@ exports.NestCord = {
         };
     },
     Parser: function (name) { return common_1.SetMetadata(constants_1.NESTCORD_PARSER_NAME, name); },
+    Permissions: function (permissions) { return common_1.SetMetadata(constants_1.NESTCORD_PERMISSION, permissions); },
 };
 //# sourceMappingURL=nestcord.decorator.js.map

@@ -65,11 +65,13 @@ var NestcordCommandExecutor = /** @class */ (function () {
     }
     NestcordCommandExecutor.prototype.handle = function (client, message) {
         return __awaiter(this, void 0, void 0, function () {
-            var input, matcher, args, match, command, last, i, data, handler, params, injectionMapper, result;
+            var input, matcher, args, match, command, last, i, data, handler, perms, params, injectionMapper, result;
             var _a;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
+                        if (!message.guild)
+                            return [2 /*return*/];
                         if (!message.content.startsWith(this.prefix))
                             return [2 /*return*/];
                         input = message.content.substring(this.prefix.length);
@@ -91,6 +93,9 @@ var NestcordCommandExecutor = /** @class */ (function () {
                             command.pop();
                         }
                         if (!last)
+                            return [2 /*return*/];
+                        perms = Reflect.getMetadata(constants_1.NESTCORD_PERMISSION, last.instance.constructor);
+                        if (perms && !message.member.hasPermission(perms, { checkAdmin: true, checkOwner: true }))
                             return [2 /*return*/];
                         params = args.slice(command.length);
                         injectionMapper = this.parser.parse(message, last, params);

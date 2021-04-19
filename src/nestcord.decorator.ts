@@ -4,10 +4,11 @@ import {
     NESTCORD_COMMAND, NESTCORD_COMMAND_REGISTER,
     NESTCORD_EVENT,
     NESTCORD_INJECT,
-    NESTCORD_PARAM, NESTCORD_PARSER_NAME,
+    NESTCORD_PARAM, NESTCORD_PARSER_NAME, NESTCORD_PERMISSION,
 } from "./constants";
 import {NestCordParser} from "./nestcord.parser";
 import {NestCordCommand} from "./command/nestcord-command.type";
+import {Permissions} from "discord.js";
 
 export interface InjectDescriptor {
     descriptor: string;
@@ -54,4 +55,5 @@ export const NestCord = {
         Reflect.defineMetadata(NESTCORD_PARAM, meta, target);
     },
     Parser: (name: string) => SetMetadata(NESTCORD_PARSER_NAME, name),
+    Permissions: (permissions: number) => SetMetadata(NESTCORD_PERMISSION, permissions),
 };

@@ -20,4 +20,5 @@ export declare const NestCord: {
     Children: (...children: Array<Type<NestCordCommand>>) => import("@nestjs/common").CustomDecorator<string>;
     Param: (index: number, descriptor: string, parser: Type<NestCordParser<any>>, name?: string, optional?: boolean) => ClassDecorator;
     Parser: (name: string) => import("@nestjs/common").CustomDecorator<string>;
+    Permissions: (permissions: number) => import("@nestjs/common").CustomDecorator<string>;
 };

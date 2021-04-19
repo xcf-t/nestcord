@@ -5,7 +5,7 @@ import {Injectable} from "@nestjs/common";
 import {NestCordCommandRegistry} from "./nestcord-command.registry";
 import {NestCordCommandMeta} from "./nestcord-command.type";
 import {NestCordCommandParser} from "./nestcord-command.parser";
-import {NESTCORD_PARSER_NAME} from "../constants";
+import {NESTCORD_PARSER_NAME, NESTCORD_PERMISSION} from "../constants";
 
 @Injectable()
 @NestCord.Event('message')
@@ -19,6 +19,7 @@ export class NestcordCommandExecutor implements NestCordEvent<'message'> {
     private prefix = '!';
 
     async handle(client: Client, message: Message) {
+        if (!message.guild) return;
         if (!message.content.startsWith(this.prefix)) return;
 
         const input = message.content.substring(this.prefix.length);
@@ -50,6 +51,10 @@ export class NestcordCommandExecutor implements NestCordEvent<'message'> {
         }
 
         if (!last) return;
+
+        const perms = Reflect.getMetadata(NESTCORD_PERMISSION, last.instance.constructor);
+
+        if (perms && !message.member.hasPermission(perms, { checkAdmin: true, checkOwner: true })) return;
 
         const params = args.slice(command.length);
 
